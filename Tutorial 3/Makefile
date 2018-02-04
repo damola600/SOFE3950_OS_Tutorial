@@ -21,4 +21,4 @@ question3: Question3.c
 clean:
 	$(RM) $(BIN)
 
-$(shell mkdir -p $(BIN)) # Create bin directory if it doesnot exist
+$(shell mkdir -p $(BIN)) # Create bin directory automatically
