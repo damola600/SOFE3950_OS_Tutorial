@@ -41,7 +41,7 @@ void grade_students (struct grade *grades,int num_students)
   stdDeviation =  sqrt(diff/(num_students - 1));
 
   //Printing mean and standard Deviation into file and closing it
-  fprintf(fpointer, "\n\n Average: %f \t standard Deviation: %f", average, stdDeviation);
+  fprintf(fpointer, "\n\n Average: %f \t standard Deviation: %f\n", average, stdDeviation);
 
   fclose(fpointer);
 }
