@@ -1,12 +1,12 @@
 * Conceptual Question's Answers - Tutorial 5
- 1. *pthread_create* - Will create a new thread based in the /POSIX/
+ 1. =pthread_create= - Will create a new thread based in the /POSIX/
     standards using the given function as an entry point.
 
-    *pthread_join* - Ask the calling thread to wait until the given
+    =pthread_join= - Ask the calling thread to wait until the given
     thread terminates, essentially joining the current thread with the
     child/sub thread.
 
-    *pthread_exit* - This function terminates the calling thread, it
+    =pthread_exit= - This function terminates the calling thread, it
     makes the passed pointer available to any successful join
     functions with the terminating thread
 
