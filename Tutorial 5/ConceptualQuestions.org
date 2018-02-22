@@ -49,10 +49,28 @@
 
  5. The methods used to perform mutual exclusion when using pthreads are
 
-        =pthread_mutex_init (mutex,attr)= - This method is used to dynamically initialize the =mutex= with the attributes specified as =attr=.
-        =pthread_mutex_destroy (mutex)= - This method is used to destroy/free the =mutex= object when it is no longer needed.
-        =pthread_mutexattr_init (attr)= - This method is used to create a mutex =attr= which is needed for the creation of a new mutex.
-        =pthread_mutexattr_destroy (attr)= - This method is used to destroy/free the =attr= object when we no longer need it.
-        =pthread_mutex_lock (mutex)= - This method is used to acquire lock the specified =mutex= so the critical data can be accessed without interference from other threads
-        =pthread_mutex_trylock (mutex)= - This will try to lock a =mutex= and return and error code if the mutex is already locked by another thread instead of waiting it to be unlocked preventing deadlocks.
-        =pthread_mutex_unlock (mutex)= - This will unlock the =mutex= if called by the owning thread. This will enable other threads to lock and use the critical data.
+    =pthread_mutex_init (mutex,attr)= - This method is used to
+    dynamically initialize the =mutex= with the attributes specified as
+    =attr=.
+
+    =pthread_mutex_destroy (mutex)= - This method is used to
+    destroy/free the =mutex= object when it is no longer needed.
+
+    =pthread_mutexattr_init (attr)= - This method is used to create
+    a mutex =attr= which is needed for the creation of a new mutex.
+
+    =pthread_mutexattr_destroy (attr)= - This method is used to
+    destroy/free the =attr= object when we no longer need it.
+
+    =pthread_mutex_lock (mutex)= - This method is used to acquire
+    lock the specified =mutex= so the critical data can be accessed
+    without interference from other threads
+
+    =pthread_mutex_trylock (mutex)= - This will try to lock a =mutex=
+    and return and error code if the mutex is already locked by
+    another thread instead of waiting it to be unlocked preventing
+    deadlocks.
+
+    =pthread_mutex_unlock (mutex)= - This will unlock the =mutex= if
+    called by the owning thread. This will enable other threads to
+    lock and use the critical data.
