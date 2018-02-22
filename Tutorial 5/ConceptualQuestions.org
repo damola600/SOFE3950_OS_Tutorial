@@ -1,4 +1,11 @@
-* Conceptual Question's Answers - Tutorial 5
+#+OPTIONS: toc:nil num:nil
+
+* *SOFE 3950U: Tutorial 5 Activity*
+*Group 1*
+*Justin Kaipada 100590167*
+*Anthea Ariyajeyam 100556294*
+
+* Conceptual Question's Answers
  1. =pthread_create= - Will create a new thread based in the /POSIX/
     standards using the given function as an entry point.
 
