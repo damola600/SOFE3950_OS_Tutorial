@@ -1,9 +1,23 @@
 #+OPTIONS: toc:nil num:nil
 
-* *SOFE 3950U: Tutorial 5 Activity*
-*Group 1*
-*Justin Kaipada 100590167*
-*Anthea Ariyajeyam 100556294*
+#+BEGIN_EXPORT latex
+% This is the title page
+
+\thispagestyle{empty} % No page number on the first page
+\begin{center}
+  {\Huge\textbf{SOFE 3950U: Tutorial 5}\par}
+  \vspace{20mm}\\
+  \includegraphics[scale=1.5]{uoit_logo.png}
+  \vspace{40mm}\\
+  \begin{large}
+      \textbf{Group 1}\\
+      \vspace{10mm}\\
+      \textbf{Anthea Ariyajeyam 100556294}\\
+      \textbf{Justin Kaipada 100590167}
+  \end{large}
+\end{center}
+\newpage
+#+END_EXPORT
 
 * Conceptual Question's Answers
  1. =pthread_create= - Will create a new thread based in the /POSIX/
