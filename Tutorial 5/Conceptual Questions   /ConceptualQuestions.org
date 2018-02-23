@@ -1,7 +1,12 @@
 #+OPTIONS: toc:nil num:nil
 #+LATEX_CLASS: article
 #+LATEX_CLASS_OPTIONS: [a4paper,12pt]
-
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{soul}
+#+LATEX_HEADER: \definecolor{cottoncandy}{RGB}{255, 216, 233}
+#+LATEX_HEADER: \sethlcolor{cottoncandy}
+#+LATEX_HEADER: \let\OldTexttt\texttt
+#+LATEX_HEADER: \renewcommand{\texttt}[1]{\OldTexttt{\hl{#1}}}
 
 #+BEGIN_EXPORT latex
 % This is the title page
