@@ -9,12 +9,12 @@
   \vspace{20mm}\\
   \includegraphics[scale=1.5]{uoit_logo.png}
   \vspace{40mm}\\
-  \begin{large}
+  \begin{Large}
       \textbf{Group 1}\\
       \vspace{10mm}\\
       \textbf{Anthea Ariyajeyam 100556294}\\
       \textbf{Justin Kaipada 100590167}
-  \end{large}
+  \end{Large}
 \end{center}
 \newpage
 #+END_EXPORT
