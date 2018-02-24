@@ -3,10 +3,10 @@
 #+LATEX_CLASS_OPTIONS: [a4paper,12pt]
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \usepackage{soul}
-#+LATEX_HEADER: \definecolor{cottoncandy}{RGB}{255, 216, 233}
-#+LATEX_HEADER: \sethlcolor{cottoncandy}
+#+LATEX_HEADER: \definecolor{foreground}{RGB}{184, 83, 83}
+#+LATEX_HEADER: \definecolor{background}{RGB}{255, 231, 231}
 #+LATEX_HEADER: \let\OldTexttt\texttt
-#+LATEX_HEADER: \renewcommand{\texttt}[1]{\OldTexttt{\hl{#1}}}
+#+LATEX_HEADER: \renewcommand{\texttt}[1]{\OldTexttt{\colorbox{background}{\textcolor{foreground}{#1}}}}
 
 #+BEGIN_EXPORT latex
 % This is the title page
