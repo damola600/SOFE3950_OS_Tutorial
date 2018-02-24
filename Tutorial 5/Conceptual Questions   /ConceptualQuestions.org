@@ -39,10 +39,15 @@
     functions with the terminating thread
 
  2. While threads have there on stack memory to store independent
-    information, all the threads created by a process share the same
-    heap memory and data arrays. This means that all the variables
-    local and global are shared by different threads if they are
-    created by the same process.
+    information such as local variables, all the threads created by a
+    process share the same heap memory, data segment, code segment and
+    so on that belongs to the same process.This means that all the
+    global variables and input-output streams are shared by every
+    thread but each thread will have there on copy of local variables.
+
+    Although other thread's stack memory is not available by default, in
+    theory you can still hold a pointer to another threads stack frame
+    which can be accessed by any thread.
 
  3. In *multithreading* many threads are created by a process to do work
     concurrently and/or parallel.  In *multiprocessing* instead of
