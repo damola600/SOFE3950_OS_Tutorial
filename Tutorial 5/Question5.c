@@ -1,4 +1,3 @@
-#define _XOPEN_SOURCE 600
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,7 +6,6 @@
 double total_grade     = 0;
 double total_bellcurve = 0;
 pthread_mutex_t mutex  = PTHREAD_MUTEX_INITIALIZER;
-pthread_barrier_t barrier;
 
 void* read_grades(void* grade_ptr)
 {
