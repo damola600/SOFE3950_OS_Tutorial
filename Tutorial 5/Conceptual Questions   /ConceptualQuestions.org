@@ -107,3 +107,8 @@
     =pthread_mutex_unlock (mutex)= - This will unlock the =mutex= if
     called by the owning thread. This will enable other threads to
     lock and use the critical data.
+
+#+BEGIN_EXPORT latex
+  \vspace{20mm}
+#+END_EXPORT
+*** Applications questions and the bonus question is on separate files which can be build using the makefile provided.

@@ -4,7 +4,7 @@ CSTANDARD = -std=c11
 BIN	= ./bin
 
 default: all
-all: question1 question2 question3 question4 question5
+all: question1 question2 question3 question4 question5 question6
 
 question1: Question1.c
 	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question1 Question1.c
@@ -19,7 +19,10 @@ question4: Question4.c
 	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question4 Question4.c
 
 question5: Question5.c
-	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question5 Question5.c -lm
+	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question5 Question5.c
+
+question6: Question6.c
+	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question6 Question6.c
 
 .PHONY: clean
 

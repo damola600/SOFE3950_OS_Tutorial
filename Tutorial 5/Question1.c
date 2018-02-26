@@ -10,7 +10,7 @@ void delay(int milli_secs)
         ;
 }
 
-void* goodbye(void* foo)
+void* goodbye()
 {
     int r = rand() % 8; /* Get random number b/w 0 and 7 */
     delay(r * 1000);
@@ -18,7 +18,7 @@ void* goodbye(void* foo)
     pthread_exit(NULL);
 }
 
-void* hello_world(void* foo)
+void* hello_world()
 {
     int r = rand() % 8;
     delay(r * 1000);
