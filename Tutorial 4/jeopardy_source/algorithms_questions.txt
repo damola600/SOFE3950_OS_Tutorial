@@ -1,0 +1,15 @@
+An abstract data type that adds data by using a PUSH operation and removes data by using a POP operaion.
+stack
+100
+
+A sorting algrothim that can have a running time of n^2 or nlogn.
+quicksort
+200
+
+A algorthim that picks the best choice at the moment in hopes that it will lead to a globally optimal solution.
+greedy algorthim
+300
+
+Solves a subproblem and saves the answer in a table.
+dynamic programming
+400
