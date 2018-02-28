@@ -1,0 +1,15 @@
+Operation that results in the remainder after division of one number by another.
+modulo
+100
+
+A structure that repeatdely runs code under condition(s).
+loop
+200
+
+Used to create an object.
+constructor
+300
+
+An abiliy of an object to take on many forms.
+polymorephism
+400

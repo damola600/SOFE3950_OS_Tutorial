@@ -1,0 +1,15 @@
+A collection of related data orgranized in columns and rows.
+table
+100
+
+A query within a query.
+subquery
+200
+
+Uniquly define rows in a table.
+primary key
+300
+
+An SQL clause that combines tables based on their columns.
+join
+400

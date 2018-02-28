@@ -1,1 +1,9 @@
+# ignore the binary directory
+
 *bin
+
+# ignore latex files
+*.log
+*.out
+*.aux
+*.tex
