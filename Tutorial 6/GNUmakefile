@@ -1,17 +1,17 @@
 CC      = gcc
-CFLAGS  = -g -Wall -Wextra -pthread
+CFLAGS  = -g -Wall -Wextra
 CSTANDARD = -std=c11
 BIN	= ./bin
 
 default: all
-all: question1
-# question2 question3 question4 question5 question6
+all: question1 question2
+# question3 question4 question5 question6
 
 question1: Question1.c
 	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question1 Question1.c
 
-# question2: Question2.c
-# 	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question2 Question2.c
+question2: Question2.c
+	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question2 Question2.c
 
 # question3: Question3.c
 # 	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question3 Question3.c
