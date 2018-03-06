@@ -17,13 +17,20 @@ void* factorial(void* ptr)
     int f                = 1;
     struct Unit* current = (struct Unit*)ptr;
     for (int i = 1; i <= current->number; i++) {
-        f = f * i;
+        f = f * i; /* Calculate factorial */
     }
-    while (moving_sum[current->index - 1] == 0) {
+    while (current->index == 0 || moving_sum[current->index - 1] > 0) {
         sem_wait(&semaphore);
-        if (moving_sum[current->index - 1] > 0)
+        if (current->index == 0) {
+            moving_sum[current->index] = 0 + f; /* Default condition */
+            sem_post(&semaphore);
+            pthread_exit(NULL);
+        } else if (moving_sum[current->index - 1] > 0) {
             moving_sum[current->index] = moving_sum[current->index - 1] + f;
-        sem_post(&semaphore);
+            sem_post(&semaphore);
+            pthread_exit(NULL);
+        } else
+            printf("What sort of black magic is this!\n");
     }
     pthread_exit(NULL);
 }
@@ -38,8 +45,8 @@ int main()
         scanf("%d", &entries[i].number);
         entries[i].index = i;
     }
-    /* Second 0 means the semaphore is shared between threads */
-    /* 	Third argumnet 1 is the value of the semaphore in the beingning */
+    /* Second argument 0 means the semaphore is shared between threads */
+    /* Third argumnet 1 is the value of the semaphore in the beingning */
     if (sem_init(&semaphore, 0, 1)) {
         printf("Could not initialize a semaphores\n");
         return -1;
