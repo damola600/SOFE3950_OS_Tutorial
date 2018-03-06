@@ -1,0 +1,45 @@
+#+OPTIONS: toc:nil num:nil
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper,12pt]
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage{soul}
+#+LATEX_HEADER: \definecolor{foreground}{RGB}{184, 83, 83}
+#+LATEX_HEADER: \definecolor{background}{RGB}{255, 231, 231}
+#+LATEX_HEADER: \let\OldTexttt\texttt
+#+LATEX_HEADER: \renewcommand{\texttt}[1]{\OldTexttt{\colorbox{background}{\textcolor{foreground}{#1}}}}
+
+* Conceptual Question's Answers
+ 4. *Wait* and *Signal* are the main modifier methods used to control and use
+    semaphores when syncing many processes in a multi-processing
+    system/program. *Wait* will increase the value of the semaphore while *signal*
+    will decrease the value of the semaphore. When the value of the semaphore is
+    less than 0 another threads/processes are asked to sleep instead of
+    executing the critical section.
+
+ 5. Main functions used from *<semaphore.h>* are as follows:-
+
+    - =int sem_init(sem_t*, int, unsigned)= - This will create an unnamed
+      semaphore. Upon successful creation this function will return 0 or -1 if
+      the initialization failed.
+
+    - =int sem_destroy(sem_t * sem)= - This will destroy the semaphore pointed by
+      =sem=. Only a semaphore created using =sem_init()= can be destroyed this
+      way. Upon successful destruction this function will return 0 or -1 if the
+      destruction failed.
+
+    - =sem_t *sem_open(const char *, int, ...)= - This will create a connection
+      between a semaphore and a process. The semaphore must be named for
+      successful use of this method. Upon successful execution the method will
+      return the address of the semaphore, if failed it will return the value
+      =SEM_FAILED=.
+
+    - =int sem_post(sem_t *sem)= - This will unlock the semaphore pointed by =sem=
+      and allows execution of the critical section to happen. The semaphore
+      value will be just incremented, if it is positive other processes can
+      follow the execution after it. Upon successful execution this function will
+      return 0 or -1 if the execution failed.
+
+    - =int sem_wait(sem_t *)= - This simply decrements the semaphore pointed by
+      =sem= locking it. If the semaphore's value is greater than zero then the
+      function returns at once. If the value is 0 it waits until it is possible
+      for documenting until it is interrupted by something else.
