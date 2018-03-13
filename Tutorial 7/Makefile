@@ -4,7 +4,7 @@ CSTANDARD = -std=c11
 BIN	= ./bin
 
 default: all
-all: question1 question4
+all: process question1 question4
 # question2 question3 question5
 
 $(shell mkdir -p $(BIN)) # Create bin directory automatically
@@ -21,6 +21,9 @@ question1: question1.c
 
 question4: question4.c
 	$(CC) $(CFLAGS) -std=gnu99 -o $(BIN)/question4 question4.c
+
+process: sigtrap.c
+	$(CC) $(CFLAGS) -std=gnu99 -o $(BIN)/process sigtrap.c
 
 # question5: question5.c
 # 	$(CC) $(CFLAGS) -std=gnu99 -o $(BIN)/question5 question5.c
