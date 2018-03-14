@@ -12,40 +12,7 @@
 //Defining Macros
 #define CATEGORIES 4
 
-//Global variables
-struct queue *head;
 
-
-/*push()
- * Adds process from parameter to the beginning of the link list
- * 
-*/        
-void push(struct proc process)
-{
-  struct queue *temp = malloc (sizeof(struct queue));
-  
-  temp->process = process;
-
-  temp->next = head;
-
-  head = temp;
-
-}
-
-/* print()
- * Prints the queue struct
-*/
-void print()
-{
-  
-  struct queue *temp = head;
-
-  while (temp != NULL)
-  {
-    printf("Name: %s \t Priority: %i \t Pid: %i \t Runtime: %i\n", temp->process.name, temp->process.priority,temp->process.pid, temp->process.runtime);
-    temp = temp->next;
-  }
-}
 
 
 int main()
