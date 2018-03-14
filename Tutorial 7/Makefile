@@ -19,7 +19,7 @@ question2: question2.c
 	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question2 question2.c
 
 question3: question3.c
- 	$(CC) $(CFLAGS) -std=gnu99 -o $(BIN)/question3 question3.c
+	$(CC) $(CFLAGS) -std=gnu99 -o $(BIN)/question3 question3.c
 
 question4: question4.c
 	$(CC) $(CFLAGS) -std=gnu99 -o $(BIN)/question4 question4.c
