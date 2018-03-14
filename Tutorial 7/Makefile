@@ -5,8 +5,8 @@ BIN	= ./bin
 
 default: all
 
-all: process question1 question4 question5
-# question2 question3
+all: process question1 question4 question5 question2
+# question3
 
 $(shell mkdir -p $(BIN)) # Create bin directory automatically
 $(shell cp processes.txt $(BIN)) # Copy resources
@@ -34,4 +34,3 @@ question5: question5.c
 
 clean:
 	rm -f $(BIN)
-
