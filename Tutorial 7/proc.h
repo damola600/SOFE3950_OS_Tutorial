@@ -8,6 +8,8 @@
 
 //Defining Macro
 #define MAX_LENGTH 265
+//Defining Macros
+#define CATEGORIES 4
 
 //Struct proc
 struct proc
@@ -17,3 +19,8 @@ struct proc
   int pid;
   int runtime;
 };
+
+void printProcess(struct proc process)
+{
+  printf("Name: %s \t Priority: %i \t Pid: %i \t Runtime: %i\n",process.name, process.priority, process.pid, process.runtime);
+}
