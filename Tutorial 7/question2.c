@@ -88,7 +88,7 @@ int main()
 
   while ((pro = pop()) != NULL)
   {
-    printPorcess(pro);      //WORKING
+    printProcess(*pro);      
   }
   print();  //Noting is being printed therefore items are not in list
 
