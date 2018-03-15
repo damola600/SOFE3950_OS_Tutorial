@@ -10,9 +10,8 @@
 #include "queue.h"
 
 
-/* Operating Systems - Tutorial 7 Application Question 1
+/* Operating Systems - Tutorial 7 Application Question 5
  *
- * Contains the proc struct
  * 
  * Group: Wednesday Group 1
  * Names: Justin Kaipada 100590167 & Anthea Ariyajeyam 100556294
