@@ -9,6 +9,14 @@
 
 #include "queue.h"
 
+
+/* Operating Systems - Tutorial 7 Application Question 5
+ *
+ * 
+ * Group: Wednesday Group 1
+ * Names: Justin Kaipada 100590167 & Anthea Ariyajeyam 100556294
+*/
+
 int main()
 {
     // Defining pointers and variables
@@ -56,26 +64,29 @@ int main()
     printf("\nExecuting processes with priority 0\n");
     queue = head;
     int status;
+    
 
-    while (queue != NULL) {
-        if (queue->process.priority == 0) {
-            process = delete_name(queue->process.name);
+    while (queue != NULL)
+    {
+        if (queue->process.priority == 0)
+        {
+           process = delete_name(queue->process.name);
 
-            pid_t pid = fork();
-
-            // Fork failed
-            if (pid == -1) {
-                printf("Error: Fork process failed");
-                exit(0);
-            }
-
-            // Child process
-            if (pid == 0) {
-                printf("\nCHILD");
-                execvp(process->name, NULL);
-            }
-
-            printf("\nPARENT");
+           pid_t pid = fork();
+           
+           //Fork failed
+           if (pid == -1)
+           {
+               printf("Error: Fork process failed");
+               exit(0);
+           }
+           
+           //Child process
+           if (pid == 0)
+           {    
+                execvp(process->name, NULL);                  
+           }
+           
             sleep(process->runtime);
             kill(pid, SIGINT);
             waitpid(-1, &status, 0);
@@ -83,8 +94,38 @@ int main()
         }
         queue = queue->next;
     }
+    printf("\n\n");
 
-    print();
+    
+    printf("\nPoping and executing items from list\n");
+    queue = head;
+    while (queue != NULL)
+    {
+        process = pop();
+
+        pid_t pid = fork();
+           
+        //Fork failed
+        if (pid == -1)
+        {
+            printf("Error: Fork process failed");
+            exit(0);
+        }
+           
+        //Child process
+        if (pid == 0)
+        {    
+            execvp(process->name, NULL);                  
+        }
+           
+        sleep(process->runtime);
+        kill(pid,SIGINT);
+        waitpid(pid, &status, 0);  
+        printProcess(*process);
+            
+        queue = queue->next;
+        
+    }
 
     return 0;
 }
