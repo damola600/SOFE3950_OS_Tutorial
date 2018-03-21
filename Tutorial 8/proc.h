@@ -1,7 +1,7 @@
 #ifndef PROC_HPP
 #define PROC_HPP
 
-struct Proc {
+typedef struct Proc {
     char name[256];
     int priority;
     int pid;

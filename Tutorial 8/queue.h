@@ -2,13 +2,14 @@
 #define QUEUE_HPP
 
 #include <stdlib.h>
+#include "proc.h"
 
 typedef struct node {
-    int value;
+    Proc value;
     struct node* next;
 } Queue;
 
-Queue* enqueue(Queue* queue, int value)
+Queue* enqueue(Queue* queue, Proc value)
 {
     Queue* temp = NULL;
     temp        = (Queue*)malloc(sizeof(Queue));
