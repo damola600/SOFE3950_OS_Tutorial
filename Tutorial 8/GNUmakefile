@@ -17,7 +17,7 @@ question2: Question2.c
 	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question2 Question2.c
 
 question1: question1.c
-	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question1 question1.c
+	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question1 question1.c proc_tree.c
 
 .PHONY: clean
 
