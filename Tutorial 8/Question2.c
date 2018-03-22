@@ -83,7 +83,7 @@ int main()
             exit(-1);
         } else if (pid == 0) {
             /* Child process */
-            if (secondary->value.suspended)
+            if (secondary->value.suspended == 1)
                 kill(secondary->value.pid, SIGCONT); /* resume it */
             else
                 execvp("./process", NULL);
@@ -94,19 +94,19 @@ int main()
             /* Simulate freeing memory by modifying the array */
             for (int i = 0; i < secondary->value.memory; ++i) avail_mem[i] = 0;
             secondary = dequeue(secondary);
-            break;
+            waitpid(-1, &status, 0);
         } else {
             kill(pid, SIGTSTP); /* pause it */
+            /* Simulate freeing memory by modifying the array */
+            for (int i = 0; i < secondary->value.memory; ++i) avail_mem[i] = 0;
+            Proc temp_proc = secondary->value;
+            temp_proc.runtime -= 1;
+            temp_proc.suspended = 1;
+            temp_proc.pid       = pid;
+            temp                = enqueue(secondary, temp_proc); /* Add the process back to queue */
+            if (secondary == NULL) secondary = temp;
+            secondary = dequeue(secondary);
         }
-        /* Simulate freeing memory by modifying the array */
-        for (int i = 0; i < secondary->value.memory; ++i) avail_mem[i] = 0;
-        Proc temp_proc = secondary->value;
-        temp_proc.runtime -= 1;
-        temp_proc.suspended = 1;
-        temp_proc.pid       = pid;
-        secondary           = dequeue(secondary);
-        temp                = enqueue(secondary, proc); /* Add the process back to queue */
-        if (secondary == NULL) secondary = temp;
     }
 
     return 0;
