@@ -1,5 +1,5 @@
 /* Operating Systems - Tutorial Activity Question 1
- * 
+ *
  * Group 1 (Wednesday)
  * Names: Anthea Ariyajeyam (100556294) Justin Kaipada 100590167
 */
@@ -9,8 +9,6 @@
 #include <string.h>
 #include "proc_tree.h"
 
-
-
 int main ()
 {
     //Defining variables and pointers
@@ -19,8 +17,8 @@ int main ()
     int cpylen;             //Contains the number chars in void *infor
     int count = 0;          //Used to ensure the binary tree is initiallized once
     proc process;           //Contains the process being add to the binary tree
-    
-    
+
+
 
     //Read process.txt
     FILE * proTreeFD = fopen("processes_tree.txt","r");
@@ -37,7 +35,7 @@ int main ()
         for (int i = 0; i < CATEGORIES; i++)
         {
             info = strtok(buffer, ", ");
-            
+
             if (i == 0)
                 strcpy(process.parent, info);
 
@@ -53,7 +51,7 @@ int main ()
             cpylen = strlen(info);
             strcpy(buffer,&buffer[cpylen+2]);
         }
-        
+
         //Ensures that the tree is initialized only once
         if (count == 0)
         {
@@ -68,10 +66,10 @@ int main ()
 
     //Print tree
     printProc_Tree(tree);
-    
+
     free(tree);
     fclose(proTreeFD);
-    
+
 
     return 0;
 }
