@@ -1,3 +1,4 @@
+#define _POSIX_SOURCE
 #include <signal.h>
 #include <stdbool.h>
 #include <stddef.h>
@@ -16,19 +17,24 @@ int main()
     Queue* secondary      = NULL;
     Queue* temp           = NULL;
     int avail_mem[MEMORY] = {0};
+    int pid;
+    int status; /* For waitpid */
 
     FILE* file = fopen("processes_q2.txt", "r");
     if (file == NULL) {
-        printf("Error\n");
+        printf("Error: can't open file for reading\n");
         exit(1);
     }
 
+    /* Read all the processes from the txt file */
     int eof;
     Proc proc;
     while (eof != EOF) {
-        eof          = fscanf(file, "%s%*c %d%*c %d%*c %d", proc.name, &proc.priority, &proc.memory,&proc.runtime);
+        eof          = fscanf(file, "%s%*c %d%*c %d%*c %d", proc.name, &proc.priority, &proc.memory,
+                     &proc.runtime);
         proc.pid     = 0;
         proc.address = 0;
+        proc.suspended = 0;
         if (proc.priority == 0) {
             temp = enqueue(priority, proc);
             if (priority == NULL) priority = temp;
@@ -39,21 +45,68 @@ int main()
     }
     fclose(file);
 
-    printf("Primary\n");
-    temp = priority;
-    while (temp != NULL) {
-        printf("Name:%s Pid:%d Add:%d Pri:%d Mem:%d Run:%d\n", temp->value.name, temp->value.pid,
-               temp->value.address, temp->value.priority, temp->value.memory, temp->value.runtime);
-        temp = temp->next;
+    /* Run all the priority processes */
+    while (priority != NULL) {
+        printf("Running--> Name:%s Pid:%d Priority:%d Memory:%d Runtime:%d\n", priority->value.name,
+               priority->value.pid, priority->value.priority, priority->value.memory,
+               priority->value.runtime);
+        /* Simulate using memory by modifying the array */
+        priority->value.address = 0;
+        for (int i = 0; i < priority->value.memory; ++i) avail_mem[i] = 1;
+        pid = fork();
+        if (pid == -1) {
+            printf("Error: Fork process failed\n");
+            exit(-1);
+        } else if (pid == 0) {
+            /* Child process */
+            execvp("./process", NULL);
+        }
+        sleep(priority->value.runtime);
+        kill(pid, SIGINT); /* Interrupt it */
+        waitpid(-1, &status, 0);
+        /* Simulate freeing memory by modifying the array */
+        for (int i = 0; i < priority->value.memory; ++i) avail_mem[i] = 0;
+        priority = dequeue(priority);
     }
 
-    printf("\nSecondary\n");
-    temp = secondary;
-    while (temp != NULL) {
-        printf("Name:%s Pid:%d Add:%d Pri:%d Mem:%d Run:%d\n", temp->value.name, temp->value.pid,
-               temp->value.address, temp->value.priority, temp->value.memory,
-	       temp->value.runtime);
-        temp = temp->next;
+    /* Run all the secondary processes */
+    while (secondary != NULL) {
+        printf("Running--> Name:%s Pid:%d Priority:%d Memory:%d Runtime:%d\n",
+               secondary->value.name, secondary->value.pid, secondary->value.priority,
+               secondary->value.memory, secondary->value.runtime);
+        /* Simulate using memory by modifying the array */
+        secondary->value.address = 0;
+        for (int i = 0; i < secondary->value.memory; ++i) avail_mem[i] = 1;
+        pid = fork();
+        if (pid == -1) {
+            printf("Error: Fork process failed\n");
+            exit(-1);
+        } else if (pid == 0) {
+            /* Child process */
+            if (secondary->value.suspended)
+                kill(secondary->value.pid, SIGCONT); /* resume it */
+            else
+                execvp("./process", NULL);
+        }
+        sleep(1);
+        if (secondary->value.runtime == 1) {
+            kill(pid, SIGINT); /* Interrupt it */
+            /* Simulate freeing memory by modifying the array */
+            for (int i = 0; i < secondary->value.memory; ++i) avail_mem[i] = 0;
+            secondary = dequeue(secondary);
+            break;
+        } else {
+            kill(pid, SIGTSTP); /* pause it */
+        }
+        /* Simulate freeing memory by modifying the array */
+        for (int i = 0; i < secondary->value.memory; ++i) avail_mem[i] = 0;
+        Proc temp_proc = secondary->value;
+        temp_proc.runtime -= 1;
+        temp_proc.suspended = 1;
+        temp_proc.pid       = pid;
+        secondary           = dequeue(secondary);
+        temp                = enqueue(secondary, proc); /* Add the process back to queue */
+        if (secondary == NULL) secondary = temp;
     }
 
     return 0;
