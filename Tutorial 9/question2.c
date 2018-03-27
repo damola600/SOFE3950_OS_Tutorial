@@ -6,9 +6,9 @@
 int main(int argc, char* argv[])
 {
     int nthreads, thread_num;
-    const int n      = 100000000;
+    const int n         = 100000000;
     double y[100000000] = {0};
-    double x         = 0;
+    double x            = 0;
     if (argc < 2) {
         printf("Please enter the number of threads to use\n");
         exit(1);
