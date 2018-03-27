@@ -11,14 +11,14 @@ int main()
     /* This section will be ran parallel util the end of the block */
 #pragma omp parallel
     {
-        thread_num = omp_get_thread_num();
-        /* This is the critical section until the end of the block,
-           only one thread runs it at a time preventing race
-           cinditions
-        */
+    /* This is the critical section until the end of the block,
+       only one thread runs it at a time preventing race
+       cinditions
+    */
 #pragma omp critical
         {
 #ifdef _OPENMP
+            thread_num = omp_get_thread_num();
             num += 1;  // THREAD SAFE INCREMENT
             printf("This thread = %d, num = %d\n", thread_num, num);
 #endif
