@@ -6,7 +6,7 @@
 
 int main()
 {
-    int nthreads = 3;
+    int nthreads = 16;
     const int n  = 100000000;
     double norm  = 0;
     double x[100000000];
