@@ -1,9 +1,5 @@
 /* Operating Systems - Tutorial Activity Question 1
-<<<<<<< HEAD
- * 
-=======
  *
->>>>>>> a42c71b347f635f125c9fb910bf4203549379d6a
  * Group 1 (Wednesday)
  * Names: Anthea Ariyajeyam (100556294) Justin Kaipada 100590167
 */
@@ -13,11 +9,6 @@
 #include <string.h>
 #include "proc_tree.h"
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a42c71b347f635f125c9fb910bf4203549379d6a
 int main ()
 {
     //Defining variables and pointers
@@ -26,13 +17,8 @@ int main ()
     int cpylen;             //Contains the number chars in void *infor
     int count = 0;          //Used to ensure the binary tree is initiallized once
     proc process;           //Contains the process being add to the binary tree
-<<<<<<< HEAD
-    
-    
-=======
 
 
->>>>>>> a42c71b347f635f125c9fb910bf4203549379d6a
 
     //Read process.txt
     FILE * proTreeFD = fopen("processes_tree.txt","r");
@@ -49,11 +35,6 @@ int main ()
         for (int i = 0; i < CATEGORIES; i++)
         {
             info = strtok(buffer, ", ");
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> a42c71b347f635f125c9fb910bf4203549379d6a
             if (i == 0)
                 strcpy(process.parent, info);
 
@@ -69,11 +50,6 @@ int main ()
             cpylen = strlen(info);
             strcpy(buffer,&buffer[cpylen+2]);
         }
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> a42c71b347f635f125c9fb910bf4203549379d6a
         //Ensures that the tree is initialized only once
         if (count == 0)
         {
@@ -88,15 +64,6 @@ int main ()
 
     //Print tree
     printProc_Tree(tree);
-<<<<<<< HEAD
-    
-    free(tree);
-    fclose(proTreeFD);
-    
-
-    return 0;
-}
-=======
 
     free(tree);
     fclose(proTreeFD);
@@ -104,4 +71,3 @@ int main ()
 
     return 0;
 }
->>>>>>> a42c71b347f635f125c9fb910bf4203549379d6a
