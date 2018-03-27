@@ -8,7 +8,7 @@ $(shell mkdir -p $(BIN)) # Create bin directory automatically
 $(shell cp ./calculations.txt $(BIN)) # Copy resources for question 5
 
 default: all
-all: question4 question5 demo1 demo2
+all: question4 question5 demo1 demo2 question2
 
 question4: question4.c
 	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question4 question4.c $(LFLAGS)
@@ -21,6 +21,9 @@ demo1: demo1.c
 
 demo2: demo2.c
 	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/demo2  demo2.c $(LFLAGS)
+
+question2: question2.c
+	$(CC) $(CFLAGS) $(CSTANDARD) -o $(BIN)/question2  question2.c $(LFLAGS)
 
 .PHONY: clean
 
