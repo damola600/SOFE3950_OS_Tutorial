@@ -1,5 +1,5 @@
 /* Operating Systems - Tutorial Activity 9; Question 5
- * 
+ *
  * Group 1 (Wednesday)
  * Names: Anthea Ariyajeyam (100556294) Justin Kaipada 100590167
 */
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     float n = 100000000;
     float x,y;
     FILE * calculationsFP;
-    
+
     #ifdef _OPEN
     omp_set_num_threads(numOfThreads);
     #endif
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 
     //Performing Calucaltions and writing the results and current index for every 1 millionth calculation
     #pragma omp parallel private(x)
-    
+
         for (int i = 0; i < (int)n; i++)
         {
             x = i*dx;
@@ -44,8 +44,8 @@ int main(int argc, char *argv[])
 
             //Write to calculations.txt
             if (i % 1000000 == 0 && i != 0)
-            {   
-                #pragma omp critical 
+            {
+                #pragma omp critical
                 {
                     #ifdef _OPENMP
                     fprintf(calculationsFP, "i: %d \t x: %f \t y: %f \t \n", i,x,y );
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
                 }
             }
         }
-    
+
     //Closing file
     fclose(calculationsFP);
 
